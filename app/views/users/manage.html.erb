@@ -1,0 +1,89 @@
+<header id="manage-header">
+  <div id="manage-header-content" class="center-block">
+    <div id="manage-header-title" class="text-left pull-left">
+      <h3>Blankmanp's Blog Manage System</h3>
+    </div>
+    <div id="manage-header-option" class="pull-right">
+    	<img alt="Blogicon" src="/assets/blogIcon.jpg" class="img-circle pull-left" width="60">
+    	<p>logout</p>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</header>
+<div id="manage-content" class="center-block">
+	<div class="pull-left" id="manage-type-menu">
+		div#
+	</div>
+	<div class="pull-right" id="manage-blog-content"></div>
+	<div class="clearfix"></div>
+</div>
+
+
+<script type="text/jsx">
+	(function() {
+		//存储已通过ajax得到的博文内容
+		var ajaxBlog = [];
+		var TypeList = React.createClass({
+			render: function() {},
+			clickType: function() {}
+		});
+		var TypeAddBtn = React.createClass({
+			render: function() {},
+			addType: function() {}
+		});
+		var TypeApp = React.createClass({
+			render: function() {},
+			deleteType: function() {},
+		});
+		var BlogTitle = React.createClass({
+			render: function() {}
+		});
+		var BlogContent = React.createClass({
+			render: function() {}
+		});
+		var BlogGroup = React.createClass({
+			render: function() {}
+		})
+	})()
+	var manage = (function($) {
+		var jqueryMap = {}, 
+			logout, 
+			clickLogout, 
+			initModule;
+		//ajax method
+		logout = function() {
+			$.get('/blankmanp/logout', function(data) {
+				if (data) {
+					window.location.reload();
+				}
+			});
+		}
+
+		//animate method
+
+		//dom method
+		clickLogout = function() {
+			jqueryMap.$logoutBtn.click(function() {
+				logout();
+			})
+			jqueryMap.$logoutBtn.mouseenter(function() {
+				jqueryMap.$logoutText.fadeIn(200);
+			})
+			jqueryMap.$logoutBtn.mouseleave(function() {
+				jqueryMap.$logoutText.fadeOut(200);
+			})
+		}
+
+		//public method
+		initModule = function($container) {
+			jqueryMap = {
+				$logoutBtn: $("#manage-header-option"),
+				$logoutText: $("#manage-header-option").find('p')
+			}
+			clickLogout();
+			jqueryMap.$logoutText.hide();
+		}
+
+		initModule();
+	}(jQuery))
+</script>

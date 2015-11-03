@@ -1,0 +1,11 @@
+== This is my own blog source code
+
+Back end: Ruby on Rails; //PHP in the past
+Front end: jQuery.js & bootstrap.css;
+
+Purpose: try to show my blogs =.=
+
+Restart at: 2015.08.28
+
+What I have done: build the backend with ROR;
+Todo: finish the controller & model, try to build a single page Web application 0w0

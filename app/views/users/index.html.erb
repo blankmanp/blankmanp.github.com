@@ -1,0 +1,69 @@
+<div class="container-fluid">
+  <div class="container" style="min-width: 1180px" id="homeContainer">
+    <div class="col-md-2" id="homeTitle">
+      <img alt="Blogicon" src="/assets/blogIcon.jpg">
+      <h1>blankmanP</h1>
+    </div>
+    <div class="pull col-md-8">
+      <div class="pull-left pullCircle" id="pull1"></div>
+      <div class="pull-left pullCircle" id="pull2"></div>
+      <div class="pull-left pullCircle" id="pull3"></div>
+    </div>
+    <div class="col-md-2" id="homeMenu">
+      <ul id="menuClass">
+        <li>
+          <div class="dropdown">
+            <h1 class="dropdownTitle" id="webDrop"><a href="#">WEBSITE</a></h1>
+            <ul class="menuContent list-inline" dropby="webDrop">
+              <li class="menuContentLi pull-left"><a href="http://www.quillwrite.com">quillwrite</a></li>
+              <li class="menuContentLi pull-left"><a href="http://www.me.uestc.edu.cn/stu">UESTC</a></li>
+              <li class="menuContentLi pull-left"><a href="http://www.zjdaopu.com">zjdaopu</a></li>
+            </ul>
+          </div>
+          <div class="dropdown">
+            <h1 class="dropdownTitle" id="codeDrop"><a href="">CODE</a></h1>
+            <ul class="menuContent list-inline" dropby="codeDrop">
+              <li class="menuContentLi pull-left"><a href="https://github.com/blankmanp/snake">Snake</a></li>
+              <li class="menuContentLi pull-left"><a href="https://github.com/blankmanp/work">My Blog</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <h1 class="dropdownTitle" id="blogDrop"><a href="/blog">BLOG</a></h1>
+            <ul class="menuContent list-inline" dropby="webDrop">
+              <% @types.each do |type| %>
+                  <li class="menuContentLi pull-left"><a href="/blog/<%= type.id %>"><%= type.name %><span class="badge"><%= type.num %></span></a></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="dropdown">
+            <h1 class="dropdownTitle" id="gameDrop"><a href="">GAME</a></h1>
+            <ul class="menuContent list-inline" dropby="webDrop">
+              <li class="menuContentLi pull-left"><a href="">Snake</a></li>
+              <li class="menuContentLi pull-left"><a href="">2048</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <h1><a href="https://plus.google.com/101549408884906873125/posts"><i class="fa fa-google-plus"></i></a></h1>
+          <h1><a href="https://twitter.com/blankman_p"><i class="fa fa-twitter"></i></a></h1>
+          <h1><a href=""><i class="fa fa-weibo"></i></a></h1>
+          <h1><a href=""><i class="fa fa-qq"></i></a></h1>
+          <h1><a href=""><i class="fa fa-steam-square"></i></a></h1>
+          <h1><a href="https://github.com/blankmanp"><i class="fa fa-github"></i></a></h1>
+        </li>
+      </ul>
+      <script>
+          $(".menuContent").hide()
+                  .parent().hover(function() {
+                      $(".menuContent").hide();
+                      $(this).find(".menuContent").slideDown(100);
+                  }, function() {
+                      $(this).find(".menuContent").slideUp(100);
+                  })
+      </script>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
