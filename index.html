@@ -7,6 +7,8 @@
     <meta name="description" content="Blankmanp.GitHub.com : blankmanp&#39;s blog">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <script type="text/javascript" src="javascripts/react.min.js"></script>
+    <script type="text/javascript" src="javascripts/JSXTransformer.js"></script>
 
     <title>Blankmanp's Blog</title>
   </head>
@@ -27,6 +29,92 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
+      <div id="autoComplete"></div>
+<script type="text/jsx">
+  var InputText = React.createClass({
+    render: function() {
+      var input;
+      if (!this.props.chosenText) {
+        input = <input type="text" value={this.state.value} onChange={this.handleChange} />
+      }
+      else {
+        input = <input type="text" value={this.props.chosenText} onChange={this.handleChange} />
+      }
+      return (
+        <form>
+          {input}
+        </form>
+      );
+    },
+    getInitialState: function() {
+      return {
+        value: ''
+      }
+    },
+    handleChange: function(e) {
+      this.setState({value: e.target.value});
+      this.props.handleInput(e.target.value);
+    }
+  });
+  var AutoCompleteSection = React.createClass({
+    render: function() {
+      return (<div className="autoCompleteSection" onClick={this.handleClick}>{this.props.section}</div>);
+    },
+    handleClick: function() {
+      this.props.handleClick(this.props.section)
+    }
+  });
+  var AutoCompleteContent = React.createClass({
+    render: function() {
+      var arr = [];
+      this.props.results.forEach(function(result) {
+        arr.push(<AutoCompleteSection section={result} handleClick={this.props.handleClick} />)
+      }.bind(this))
+      return (
+        <div id="autoCompleteContent">
+          {arr}
+        </div>
+      )
+    }
+  });
+  var AutoCompleteApp = React.createClass({
+    render: function() {
+      var results = [];
+      if (this.state.searchText) {
+        this.props.data.forEach(function(item) {
+          if (item.indexOf(this.state.searchText) !== -1) {
+            results.push(item);
+          }
+        }.bind(this))
+      }
+      return (
+        <div>
+          <InputText handleInput={this.handleChange} searchText={this.state.searchText} chosenText={this.state.chosenText} ref="inputText" />
+          <AutoCompleteContent results={results} chosenText={this.state.chosenText} handleClick={this.handleClick} />
+        </div>
+      )
+    },
+    getInitialState: function() {
+      return {
+        searchText: '',
+        chosenText: ''
+      }
+    },
+    handleChange: function(text) {
+      this.setState({
+        searchText: text,
+        chosenText: ''
+      })
+    },
+    handleClick: function(text) {
+      this.setState({
+        searchText: text,
+        chosenText: text
+      })
+    }
+  })
+  React.render(<AutoCompleteApp data={['abadon', 'abc', 'apple', 'test', 'fun', 'hhh']} />, document.getElementById("autoComplete"));
+</script>
         <h3>
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
 
