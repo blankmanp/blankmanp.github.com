@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-    "webpack": "webpack --config ./webpack.config.js --watch"
+    "webpack": "webpack --config ./webpack.config.js --watch",
+    "gulp": "./node_modules/.bin/gulp"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,10 @@
     "babel-preset-react": "^6.24.1",
     "config": "^1.26.2",
     "glob": "^7.1.2",
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.2",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
     "lodash": "^4.17.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

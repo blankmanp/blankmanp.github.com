@@ -20,7 +20,7 @@ glob.sync(`${config.pages}/**/*`, {
 module.exports = {
     entry: entries,
     output: {
-        path: config.assets,
+        path: `${config.assets}/pages`,
         publicPath: '/',
         filename: '[name].js'
     },
@@ -31,7 +31,14 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: /node_modules/,
             },
-            { test: /\.css$/, loader: 'style!css' }
+            {
+                test: /\.css$/,
+                loader: 'style!css'
+            },
+            {
+                test: /\.less$/,
+                loader: 'style!css!less'
+            }
         ]
     }
 }
