@@ -1,8 +1,9 @@
 {
     "presets": [
-        "env", "react"
+        "env", "react", "stage-0", "es2015"
     ],
     "plugins": [
-        ["import", { "libraryName": "antd", "style": true }]
+        ["import", { "libraryName": "antd", "style": true }],
+        "transform-class-properties"
     ]
 }
