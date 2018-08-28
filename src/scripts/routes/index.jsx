@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Router, Route, Link, browserHistory } from "react-router";
 import _ from 'lodash';
-import Layout from '../components/layout';
+import Index from '../pages/index';
 
 export default class Routes extends Component {
     render() {
-        return [
+        return (
             <Router history={browserHistory}>
-                <Route path="/" component={Layout}></Route>
+                <Route path="/" component={Index} />
             </Router>
-        ];
+        );
     }
 }
