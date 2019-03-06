@@ -1,10 +1,11 @@
-import { Layout, Menu, Icon } from "antd";
+import { Layout } from "antd";
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import { Bread, HeaderBar, SideBar } from './pageComponents';
-import Article from '../pages/article';
+import { Route, Switch } from 'react-router-dom';
+import { HeaderBar } from './pageComponents';
+import Home from './Home';
+import Page from './Page';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Footer } = Layout;
 
 export default class PageLayout extends Component {
   render() {
@@ -13,17 +14,10 @@ export default class PageLayout extends Component {
         <Header className="header">
           <Route component={HeaderBar}></Route>
         </Header>
-        <Content style={{ padding: '0 50px' }}>
-          <Route component={Bread}></Route>
-          <Layout style={{ padding: '24px 0', background: '#fff' }}>
-            <Sider width={200} style={{ background: '#fff' }}>
-              <Route component={SideBar}></Route>
-            </Sider>
-            <Content style={{ padding: '0 24px', minHeight: 280 }}>
-              <Route path="/article/:parent?/:name?" component={Article}></Route>
-            </Content>
-          </Layout>
-        </Content>
+        <Switch>
+          <Route exact path="/" component={Home}></Route>
+          <Route component={Page}></Route>
+        </Switch>
         <Footer style={{ textAlign: 'center' }}>
           Ant Design ©2018 Created by Ant UED
         </Footer>

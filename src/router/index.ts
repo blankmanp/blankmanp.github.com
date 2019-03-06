@@ -10,6 +10,8 @@ interface sideBarType {
   'demo': Array<{}>
 }
 
+const homePageMenus:Array<menuType> = [];
+
 const menus:Array<menuType> = [
   {
     path: '/',
@@ -42,22 +44,5 @@ const sideBar:sideBarType = {
   game: [],
   demo: []
 };
-// const sideBar = [
-//   {
-//     article: [
-//       {
-//         name: '201902',
-//         title: '2019年02月',
-//         children: [
-//           { title: '测试' }
-//         ]
-//       },
-//     ],
-//   }, {
-//     game: [],
-//   }, {
-//     demo: []
-//   }
-// ];
 
 export default { menus, sideBar };

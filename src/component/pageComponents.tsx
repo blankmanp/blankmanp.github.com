@@ -11,9 +11,10 @@ const Bread: SFC<Props> = ({ location: { pathname } }) => {
   if (pathname === '/' || !pathname) {
     pathname = '';
   }
+  let paths:Array<string> = pathname.split('/');
   return (
     <Breadcrumb style={{ margin: '16px 0' }}>
-      {pathname.split('/').map(item => <BreadcrumbItem key={item || 'home'}>{item || 'home'}</BreadcrumbItem>)}
+      {paths.length > 1 ? paths.map(item => <BreadcrumbItem key={item || 'home'}>{item || 'home'}</BreadcrumbItem>) : null}
     </Breadcrumb>
   );
 }
@@ -24,18 +25,19 @@ const { SubMenu } = Menu;
 const { menus, sideBar } = MENUDATA;
 
 const HeaderBar: SFC<Props> = ({ location: { pathname } }) => {
+  let key;
   if (pathname === '/' || !pathname) {
-    pathname = 'home';
+    key = 'home';
   } else {
-    pathname = pathname.substring(1).split('/')[0];
+    key = pathname.substring(1).split('/')[0];
   }
   return (
-    <Menu theme="dark" mode="horizontal" style={{ lineHeight: '64px' }} defaultSelectedKeys={[pathname]}>
+    <Menu theme="dark" mode="horizontal" style={{ lineHeight: '64px' }} defaultSelectedKeys={[key]}>
       {
         menus.map(menu => (
           <MenuItem key={menu.name}>
             <Icon type={menu.icon} style={{ paddingRight: '5px' }} />
-            <Link to={menu.path} style={{ display: 'inline-block' }}>{menu.name}</Link>
+            { pathname !== menu.path ? <Link to={menu.path} style={{ display: 'inline-block' }}>{menu.name}</Link> : menu.name }
           </MenuItem>
         ))
       }
@@ -51,8 +53,14 @@ interface sideBarItem {
 }
 const SideBar: SFC<Props> = ({ location: { pathname } }) => {
   let name = pathname.substring(1).split('/')[0];
+  let sidebar = sideBar[name];
+  let openKeys, selectedKeys;
+  if (sidebar && sidebar[0]) {
+    openKeys = [sidebar[0].name];
+    selectedKeys = [pathname];
+  }
   return (
-    <Menu mode="inline" style={{ height: '100%' }}>
+    <Menu mode="inline" style={{ height: '100%' }} openKeys={openKeys} selectedKeys={selectedKeys}>
       {
         !name ?
         menus.map(menu => (
@@ -60,11 +68,11 @@ const SideBar: SFC<Props> = ({ location: { pathname } }) => {
             <Icon type={menu.icon} style={{ paddingRight: '5px' }} />
             <Link to={menu.path} style={{ display: 'inline-block' }}>{menu.name}</Link>
           </MenuItem>
-        )) : sideBar[name].map((item: sideBarItem) => (
+        )) : sidebar.map((item: sideBarItem) => (
           <SubMenu key={`${item.name}`} title={item.title}>
             {item.children.map(child => (
-              <MenuItem key={`${item.name}_${child.title}`}>
-                <Link to={child.path}>{child.title}</Link>
+              <MenuItem key={`${child.path}`}>
+                { pathname !== child.path ? <Link to={child.path}>{child.title}</Link> : child.title }
               </MenuItem>
             ))}
           </SubMenu>
