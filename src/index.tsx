@@ -1,6 +1,6 @@
 import React, { MouseEvent, SFC } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import PageLayout from './component/Layout';
 
 type Props = { onClick(e: MouseEvent<HTMLElement>): void };
@@ -36,8 +36,8 @@ class ButtonCounter extends React.Component<object, State> {
 }
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <ButtonCounter />
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('app')
 );
