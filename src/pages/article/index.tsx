@@ -1,4 +1,4 @@
-import React, { Component, SFC } from 'react';
+import React, { SFC } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 type Props = {

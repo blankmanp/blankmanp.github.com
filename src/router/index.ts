@@ -41,7 +41,13 @@ const sideBar:sideBarType = {
     ],
     icon: 'book'
   }],
-  game: [],
+  game: [{
+    name: 'canvas',
+    title: 'canvas小游戏',
+    children: [
+      { title: '贪吃蛇', path: '/game/snack' }
+    ]
+  }],
   demo: []
 };
 

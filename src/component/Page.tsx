@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import { Bread, SideBar } from './pageComponents';
 import Article from '../pages/article';
+import Game from '../pages/game';
 
 const { Content, Sider } = Layout;
 
@@ -17,6 +18,7 @@ export default class Home extends Component {
           </Sider>
           <Content style={{ padding: '0 24px', minHeight: 280 }}>
             <Route path="/article/:parent?/:name?" component={Article}></Route>
+            <Route path="/game/:name?" component={Game}></Route>
           </Content>
         </Layout>
       </Content>
