@@ -5,7 +5,7 @@ interface menuType {
 }
 
 interface sideBarType {
-  'article': Array<{ name: string, title: string, icon: string, children: Array<{ title: string, path: string }> }>,
+  'article': Array<{ name: string, title: string, children: Array<{ title: string, path: string }> }>,
   'game': Array<{}>,
   'demo': Array<{}>
 }
@@ -39,7 +39,12 @@ const sideBar:sideBarType = {
     children: [
       { title: '测试', path: '/article/201902/test' }
     ],
-    icon: 'book'
+  }, {
+    name: '201903',
+    title: '2019年03月',
+    children: [
+      { title: '重生小怪兽与衰仔路明非 - 第一章 - 草稿', path: '/article/201903/dragon001' }
+    ]
   }],
   game: [{
     name: 'canvas',

@@ -60,7 +60,7 @@ const SideBar: SFC<Props> = ({ location: { pathname } }) => {
     selectedKeys = [pathname];
   }
   return (
-    <Menu mode="inline" style={{ height: '100%' }} openKeys={openKeys} selectedKeys={selectedKeys}>
+    <Menu mode="inline" style={{ height: '100%' }} defaultOpenKeys={openKeys} defaultSelectedKeys={selectedKeys}>
       {
         !name ?
         menus.map(menu => (
